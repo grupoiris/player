@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Siluet Control</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/bluetooth.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+  </head>
+  <body>
+	<section class="Canvas">
+		<header>
+			<div class="container">
+				<div class="row row3">
+					<div class="col">
+						<span id="btnMenu" onclick="$('#menu').toggleClass('toCenter');" class="btn btn-hambur"> 
+							<span> </span>
+							<span> </span>
+							<span> </span>
+						</span>
+						<span id="btn-accion-izq" class="btn oculto"> Volver </span>
+					</div>
+					<div class="col">
+						Siluet Control
+					</div>
+					<div class="col">
+						<span id="btn-accion-der" class="btn oculto"> Cancelar</span>
+					</div>
+				</div>
+			</div>
+		</header>
+		<section id="menu" class="Page toLeft">
+			<div class="menu-lateral">
+				<div class="container">
+					<a href="javascript:CerrarSesion();">Cerrar Sesión</a>
+				</div>
+			</div>
+			<div class="menu-back" onclick="$('#menu').removeClass('toCenter');"></div>
+		</section>
+		<section id="inicio" class="Page toCenter">
+			<div class="container Main">
+				<span class="btn btn-primary" onclick="iniciar();">
+					Iniciar
+				</span>
+				<!--div id="map_canvas" style="width:100%; height:600px;"></div-->
+			</div>
+		</section>
+		<section id="login" class="Page">
+			<div class="container Main">
+				<h2>Ingresar</h2>
+				<div>&nbsp;</div>
+				<div class="text-center">
+					<span class="btn btn-primary" onclick="fbLogin();"> REGISTRAR CON FACEBOOK </span>
+				</div>
+				<div>&nbsp;</div>
+				<form onsubmit="return login(this); return false;">
+					<input name="correo" class="form-control required email" placeholder="Correo Electrónico" />
+					<input name="contrasena" type="password" class="form-control required" placeholder="Contraseña" />
+					<div class="row row2">
+						<div class="col">
+							<span onclick="botonRestore();">Olvide mi contraseña</span>
+						</div>
+						<div class="col text-right">
+							<button id="BtnLogin" class="btn btn-primary"> ENTRAR </button>
+						</div>
+					</div>
+				</form>
+				<div>&nbsp;</div>
+				<div class="text-center">
+					<span class="btn btn-success" onclick="botonRegistrar();"> REGISTRAR NUEVO USUARIO </span>
+				</div>
+			</div>
+		</section>
+		<section id="restore" class="Page">
+			<div class="container Main">
+				<h2>Restaurar Contraseña</h2>
+				<div>&nbsp;</div>
+				<form onsubmit="return restore(this); return false;">
+					<input name="correo" class="form-control required email" placeholder="Correo Electrónico" />
+					<div class="text-center">
+						<button id="BtnRestore" class="btn btn-primary"> RESTAURAR CONTRASEÑA </button>
+					</div>
+				</form>
+			</div>
+		</section>
+		<section id="registro" class="Page">
+			<div class="container Main">
+				<h2>Nuevo usuario</h2>
+				<div>&nbsp;</div>
+				<form onsubmit="return register(this); return false;">
+					<select name="genero" class="form-control required" placeholder="Genero">
+						<option value=""> Genero </option>
+						<option value="M"> Masculino </option>
+						<option value="F"> Femenino </option>
+					</select>
+					<input name="nombre" class="form-control required" placeholder="Nombre" />
+					<p>Edad (dd-mm-aaaa):</p>
+					<div class="row row3">
+						<div class="col">
+							<select name="edad_day" class="form-control required" placeholder="Edad día">
+								<option value="">Día</option>
+							</select>
+						</div>
+						<div class="col">
+							<select name="edad_month" class="form-control required" placeholder="Edad mes">
+								<option value="">Mes</option>
+								<option value="01"> Enero </option>
+								<option value="02"> Febrero </option>
+								<option value="03"> Marzo </option>
+								<option value="04"> Abril </option>
+								<option value="05"> Mayo </option>
+								<option value="06"> Junio </option>
+								<option value="07"> Julio </option>
+								<option value="08"> Agosto </option>
+								<option value="09"> Septiembre </option>
+								<option value="10"> Octubre </option>
+								<option value="11"> Noviembre </option>
+								<option value="12"> Diciembre </option>
+							</select>
+						</div>
+						<div class="col">
+							<select name="edad_year" class="form-control required" placeholder="Edad año">
+								<option value="">Año</option>
+							</select>
+						</div>
+					</div>
+					<div class="row row2">
+						<div class="col">
+							<input name="estatura" class="form-control required estatura" maxlength="4" placeholder="Estatura" />
+						</div>
+						<div class="col">
+							<input name="peso" class="form-control required onlydot" maxlength="4" placeholder="Peso" />
+						</div>
+					</div>
+					<input name="correo" class="form-control required email" placeholder="Correo Electrónico" />
+					<input name="contrasena" type="password" class="form-control required" placeholder="Contraseña" />
+					<div>&nbsp;</div>
+					<div>
+						<input name="recibir" type="checkbox" value="" onchange="var i=this; if(i.value==''){i.value='SI';}else{i.value='';}" placeholder="Recibir info vía email" />
+						Deseo recibir información vía correo electrónico
+					</div>
+					<div>&nbsp;</div>
+					<div>
+						<input name="terminos" type="checkbox" value="" onchange="var i=this; if(i.value==''){i.value='SI';}else{i.value='';}" class="required" placeholder="Terminos" />
+						Acepto terminos y condiciones
+					</div>
+					<div>&nbsp;</div>
+					<div class="text-right">
+						<button id="BtnRegister" class="btn btn-primary"> REGISTRARSE </button>
+					</div>
+				</form>
+			</div>
+		</section>
+		<section id="config" class="Page">
+			<div class="container Main">
+				<h2> Configurar </h2>
+				<div>&nbsp;</div>
+				<div class="row row2">
+					<p class="text-center"> Lugar de la actividad </p>
+					<div class="col text-center">
+						<span id="actividad-1" class="actType btn btn-default" onclick="tipoActividad(1);"> En Calle </span>
+					</div>
+					<div class="col text-center">
+						<span id="actividad-2" class="actType btn btn-default" onclick="tipoActividad(2);"> En Casa </span>
+					</div>
+				</div>
+				<div>&nbsp;</div>
+				<input id="velocidad" class="form-control" value=""/>
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+				<div class="config-item" onclick="">
+					<span class="icon icon-music"> </span> <span>No hay lista seleccionada</span>
+				</div>
+				<div id="botonDisp" class="config-item" onclick="botonDispositivos('configurar');">
+					<span class="icon icon-hearth"> </span> <span>No hay HRM conectado</span>
+				</div>
+				<div>&nbsp;</div>
+				<select id="sensible" class="form-control">
+					<option value="0"> 0 </option>
+					<option value="0.1"> 0.1 </option>
+					<option value="0.2"> 0.2 </option>
+					<option value="0.4"> 0.4 </option>
+					<option value="0.6"> 0.6 </option>
+					<option value="0.8"> 0.8 </option>
+					<option value="1" selected="selected"> 1 </option>
+					<option value="1.2"> 1.2 </option>
+					<option value="1.4"> 1.4 </option>
+					<option value="1.6"> 1.6 </option>
+					<option value="1.8"> 1.8 </option>
+					<option value="2"> 2 </option>
+					<option value="2.2"> 2.2 </option>
+					<option value="2.4"> 2.4 </option>
+					<option value="2.6"> 2.6 </option>
+					<option value="2.8"> 2.8 </option>
+					<option value="3"> 3 </option>
+					<option value="4"> 4 </option>
+					<option value="5"> 5 </option>
+				</select>
+				<div class="text-center">
+					<span class="btn btn-primary" onclick="principal('#config');"> EMPEZAR AHORA </span>
+				</div>
+			</div>
+		</section>
+		<section id="dispositivos" class="Page">
+			<div class="container Main">
+				<h2>Dispositivos HRM <span class="PPM"></span></h2>
+				<div>&nbsp;</div>
+				<div id="dispMain">
+					<div class="disp-list">
+						<!--listado dispositivos recordados-->
+					</div>
+					<div>&nbsp;</div>
+					<div class="text-center">
+						<span class="btn btn-success" onclick="botonDispositivosFind();"> Buscar dispositivos </span>
+					</div>
+				</div>
+				<div id="dispFind" class="oculto">
+					<div class="disp-find">
+						<!--listado dispositivos encontrados-->
+					</div>
+					<div>&nbsp;</div>
+					<div class="text-center">
+						<span class="btn btn-danger" onclick="botonDispositivosCancel();"> Cancelar </span>
+					</div>
+				</div>
+			</div>
+		</section>	
+		<section id="perfil" class="Page">
+			<div class="container Main">
+				Perfil
+				<div></div>
+			</div>
+		</section>
+		<section id="principal" class="Page">
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<div class="container Main">
+							<div>
+								<div class="ppal-clock"> 00:00 </div>
+							</div>
+							<div class="row row2 ppal-deta">
+								<div class="col">
+									<div class="ppal-deta-tit"> Pulso </div>
+									<div class="ppal-deta-num PPM"> 0 </div>
+								</div>
+								<div class="col">
+									<div class="ppal-deta-tit"> Pasos </div>
+									<div class="ppal-deta-num PASOS"> 0 </div>
+								</div>
+								<div class="col">
+									<div class="ppal-deta-tit"> Distancia </div>
+									<div class="ppal-deta-num DISTA"> 0 </div>
+								</div>
+								<div class="col">
+									<div class="ppal-deta-tit"> Calorias </div>
+									<div class="ppal-deta-num CALOR"> 0 </div>
+								</div>					
+							</div>
+							<div>
+								<span id="BtnPausar" class="btn btn-info" onclick="pause();"> Pausar </span>
+								<span id="BtnDetener" class="btn btn-danger oculto" onclick="stop();"> Detener </span>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<div class="map-protection"></div>
+						<div id="map-canvas">
+							<!--google maps-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="mapa" class="Page">
+			<div class="container Main">
+				Mapa
+			</div>
+		</section>
+		<section id="player" class="Page">
+			<div class="container Main">
+				Player
+			</div>
+		</section>
+	</section>
+	<style>
+		#mensajes p{
+			text-shadow: none;
+		}
+		#mensajes p:even{
+			color: #333;
+		}
+		#mensajes p:odd{
+			color: #666;
+		}
+		#mensajes p:first-child{
+			color: #fff;
+		}
+	</style>
+	<form onsubmit="javascript:eval($(this).find('input').val()); return false;">
+	<input style="font-size: 8px; position: fixed; bottom: 78px; width: 100%; z-index: 9999; margin: 0; padding: 3px;" class="form-control">
+	</form>
+	<div id="mensajes" style="height:78px; z-index: 99999; position: fixed; display: block; width: 100%; overflow: hidden; overflow-y: auto; bottom:0; left:0; color: #666; background: #000; font-size: 8px; border-top: 1px solid #333;"></div>
+  </body>
+</html>

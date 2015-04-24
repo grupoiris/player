@@ -1,0 +1,70 @@
+body{
+ 	background: #fff;
+ 	color:#333;
+}
+ .wrapper{
+ 	width:80%;
+ 	margin:auto;	
+ }
+ h2{
+ 	color:#333;
+ 	text-align: center;
+ 	width: 100%;
+	font-size: 26px;
+	margin-bottom: 0;
+ }
+ #pause{
+	display:none;
+}
+.button_action{
+	width: 50px;
+}
+.current_song_name{
+	font-style: italic;
+	text-transform: capitalize;
+}
+.controls{
+	text-align: center;
+	width: 100%;
+}
+#audio_position{
+	float: left;
+	width: 100%;
+	height: 5px;
+	margin: 5px 0px;
+}
+#list_to_songs{
+	min-height: 150px;
+	max-height: 200px;
+	margin-top: 10px;
+	overflow-y: scroll;
+	border: 1px solid #ccc;
+	max-width: 300px;
+	padding: 10px 0px;
+}
+#list_to_songs a{
+	color:#333;
+	font-size: 11px;
+	float: left;
+	margin-left: 5px;
+	margin-bottom:3px;
+	width: 90%;
+}
+#list_to_songs p{
+	color:#ccc;
+	font-size: 11px;
+	float: left;
+	margin-left: 5px;
+}
+#mensajes p{
+	text-shadow: none;
+}
+#mensajes p:even{
+	color: #333;
+}
+#mensajes p:odd{
+	color: #666;
+}
+#mensajes p:first-child{
+	color: #fff;
+}

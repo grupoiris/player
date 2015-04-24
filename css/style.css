@@ -1,0 +1,582 @@
+@charset "utf-8"; 
+  
+*{ box-sizing: border-box; margin:0; padding:0; border:0; outline:0; zoom:1; font-size:100%; vertical-align:baseline; list-style:none; text-decoration:none; clear:none;} 
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display:block;} 
+  
+html{ 
+    overflow-x:hidden; 
+    background:#f2f2f2 /*url(../images/image.jpg) no-repeat center top*/; 
+} 
+body{ 
+    min-width: 320px;
+	background: transparent;
+	font-family: arial,  'Open Sans', sans-serif;
+} 
+  
+html, body{ 
+    height:100%; 
+    font-size: 12px; 
+    color: #000; 
+    font-weight: 400;
+} 
+  
+/* FOOTER LAYOUT */
+.Container{ 
+    min-height:100%; 
+    height:auto !important; 
+    height:100%; 
+    margin:0 auto -35px; 
+} 
+.Push{ 
+    height:50px; 
+} 
+/*FOOTER LAYOUT*/
+  
+h1,h3,h4,h5,h6{ 
+    font-weight: 100; 
+	font-family:'Open Sans' sans-serif;
+	margin: 0 0 15px 0;
+} 
+  
+h1{font-size:2.0em;} 
+h2{font-size:1.8em;} 
+h3{font-size:1.6em;} 
+h4{font-size:1.4em;} 
+h5{font-size:1.3em;} 
+h6{font-size:1.2em;} 
+
+p{ 
+    font-weight:normal; 
+    padding-bottom: .7em;
+} 
+  
+a{ 
+    color:#3D82FF; 
+    text-decoration:underline; 
+} 
+a:hover{ 
+    color:#053EA3; 
+} 
+  
+ul{ 
+    margin-top:0.8em; 
+} 
+ol li, 
+ul li{ 
+    margin-top:0.6em; 
+    margin-left:1.9em; 
+    list-style-type:disc; 
+} 
+ol li{ 
+    list-style-type:decimal; 
+} 
+  
+img{vertical-align:middle;}
+
+.oculto{
+	display: none !important;
+}
+.text-center{
+	text-align: center;
+}
+.text-right{
+	text-align: right;
+}
+
+#cortina{
+	position: absolute;
+	position: fixed;
+	z-index: 999999;
+	background-color: #fff;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url(../img/loader.gif);
+	background-color: rgba(0,0,0, 0.6);
+	width: 100%;
+	height: 100%;
+}
+
+.Canvas{
+	top: 0; 
+	left: 0; 
+	width: 100%; 
+	height: 100%;
+	position: absolute;
+	overflow: hidden;
+}
+
+.Page {
+   top: 0; 
+   left: 0; 
+   z-index: 1;
+   width: 100%; 
+   height: 100%;
+   overflow: hidden;
+   background: #f2f2f2;
+   overflow-y: auto;
+   position: absolute;
+   -webkit-transition-duration: .25s;
+		   transition-duration: .25s;
+   -webkit-transform: translate3d(100%, 0, 0);
+		   transform: translate3d(100%, 0, 0);
+}
+.toLeft {
+	z-index: 1;
+    -webkit-transform: translate3d(-100%, 0, 0);
+		    transform: translate3d(-100%, 0, 0);
+}
+.toCenter {
+	z-index: 2;
+    -webkit-transform: translate3d(0, 0, 0);
+		    transform: translate3d(0, 0, 0);
+}
+.toRight {
+	z-index: 1;
+    -webkit-transform: translate3d(100%, 0, 0);
+		    transform: translate3d(100%, 0, 0);
+}
+
+.Main{
+	padding-top: 70px;
+	padding-bottom: 60px;
+}
+
+.container{
+	width: 90%;
+	margin: 0 auto;
+}
+
+/* header */
+
+header{
+	top: 0; 
+	left: 0; 
+	width: 100%;
+	z-index: 999;
+	position: fixed;
+	box-shadow: 0 6px 10px rgba(0,0,0,.1);
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #fff;
+	-webkit-transition-duration: .25s;
+		    transition-duration: .25s;
+}
+
+.btn{
+	padding: 6px 12px;
+	display:inline-block;
+	background: none;
+	border: none;
+}
+
+.btn-hambur{
+	display: block;
+	max-width: 40px;
+}
+.btn-hambur span{
+	width: 100%;
+	height: 3px;
+	display: block;
+	background: #ccc;
+	margin-bottom: 3px;
+}
+
+.btn-hambur:hover span{
+	background: #ccc;
+}
+
+.btn-info,
+.btn-danger,
+.btn-primary,
+.btn-success,
+.btn-default{
+	border:1px solid;
+}
+
+.btn-default{
+	color: #666;
+	background: #fff;
+	border-color: #bbb;
+}
+.btn-success{
+	color: #fff;
+	background: #92C59F;
+	border-color: #87B694;
+}
+.btn-primary{
+	color: #fff;
+	background: #588EDF;
+	border-color: #5383CB;
+}
+.btn-info{
+	color: #fff;
+	background: #55BED8;
+	border-color: #51A9BE;
+}
+.btn-danger{
+	color: #fff;
+	background: #D04545;
+	border-color: #BB4A4A;
+}
+
+/* end header*/
+
+/* menu lateral */
+
+.menu-lateral{
+	left: 0;
+	width: 80%;
+	height: 100%;
+	max-width: 280px;
+	padding-top: 60px;
+	padding-bottom: 40px;
+	position: absolute;
+	background: #E0E0E0;
+	overflow-y: auto;
+	z-index: 2;
+}
+
+.menu-lateral a{
+	color: #4D4D4D;
+	display: block;
+	padding: 8px 15px;
+	border-bottom: 2px groove rgba(255, 255, 255, 0.6);
+	text-decoration: none;
+}
+
+.menu-back{
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1;
+	position: absolute;
+}
+/* end menu lateral */
+
+/* secciones */
+#menu{ z-index: 3; background: none; }
+/* end secciones */
+
+
+/* dispositivos */
+.disp-find{
+	padding-bottom: 20px;
+	background: url(../img/loader-mini.gif) no-repeat center bottom;
+}
+.disp-list .disp-item,
+.disp-find .disp-item{
+	display: block;
+	margin-bottom: 10px;
+}
+.disp-list .activo,
+.disp-find .activo{
+	color: #fff;
+	background: #92C59F;
+	border-color: #87B694;
+}
+/* end dispositivos */
+/* principal */
+.ppal-clock{
+	text-align: center;
+	font-size: 60px;
+	padding-bottom: 10px;
+}
+
+.ppal-deta{
+	
+}
+.ppal-deta .col{
+	padding: 10px;
+}
+.ppal-deta-tit,
+.ppal-deta-num{
+	text-align: center;
+}
+.ppal-deta-tit{
+	color: #999;
+}
+.ppal-deta-num{
+	color: #000;
+	font-size: 38px;
+}
+
+.map-protection{
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.05);
+	position: absolute;
+	z-index: 2;
+}
+#map-canvas{
+	width: 100%;
+	height: 100%;
+	background: #ccc;
+	margin: 10px 0 50px;
+}
+/* end principal */
+
+/* columnas */
+
+.row{
+	margin-right: -15px;
+	margin-left: -15px;
+}
+
+.container:after,
+.container:before,
+.row:before,
+.row:after{
+	content:"";
+	display: table;
+}
+
+.row .col{
+	width: 100%;
+	padding-right: 15px;
+	padding-left: 15px;
+	position: relative;
+	min-height: 1px;
+
+}
+.row2 .col{
+	float: left;
+	width: 50%;
+}
+.row3 .col{
+	float: left;
+	width: 33.3%;
+}
+.row4 .col{
+	float: left;
+	width: 25%;
+}
+.row5 .col{
+	float: left;
+	width: 20%;
+}
+
+/* end columnas */
+
+.form-control{
+	width: 100%;
+	border: 1px solid #ccc;
+	padding: 10px;
+	background: #fff;
+	margin-bottom: 15px;
+}
+
+.form-control.error{
+	background: #F8D7CC;
+	border: 1px solid #D19393;
+}
+textarea.form-control{
+	min-height: 180px;
+	resize: vertical;
+}
+
+/* ak-tooltip */
+.ak-tooltip{
+	position: absolute;
+	height: 0;
+	z-index: 1070;
+}
+.ak-tooltip-int{
+	bottom: 0;
+	width: 100%;
+	padding: 5px 7px;
+	font-size: .9em;
+	position: absolute;
+	color: #000;
+	background: #F8E8CC;
+	border: 1px solid #D1B693;
+	box-shadow: 0 5px 9px rgba(0, 0, 0, 0.4);
+	cursor: pointer;
+}
+
+.ak-tooltip-int:after,
+.ak-tooltip-int:before{
+	content: " ";
+	position: absolute;
+	display: block;
+	width: 0;
+	height: 0;
+	bottom: -6px;
+	left: 48%;
+	border-top: 6px solid #D1B693;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+}
+.ak-tooltip-int:after{
+	bottom: -4px;
+	border-top: 6px solid #F8E8CC;
+}
+
+.ak-tooltip-danger .ak-tooltip-int{
+	background: #F8D7CC;
+	border: 1px solid #D19393;
+}
+.ak-tooltip-danger .ak-tooltip-int:before{
+	border-top: 6px solid #D19393;
+}
+.ak-tooltip-danger .ak-tooltip-int:after{
+	border-top: 6px solid #F8D7CC;
+}
+
+.ak-alert{
+	width: 100%;
+	display: block;
+	padding: 5px 7px;
+	font-size: .9em;
+	background: #F8E8CC;
+	border: 1px solid #D1B693;
+}
+/* end ak-tooltip */
+
+/* config */
+.config-item{
+	color: #C2C2C2;
+	padding: 10px;
+	border-bottom: 2px groove rgba(210, 210, 210, 0.6);
+}
+.config-item.activo{
+	color: #333;
+}
+/* end config */
+
+/* icons */
+.icon{
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	margin-right: 8px;
+	background: #ccc;
+	vertical-align: bottom;
+}
+
+/* end icons */
+
+/*
+ * Swiper 2.7.6
+ * Mobile touch slider and framework with hardware accelerated transitions
+ *
+ * http://www.idangero.us/sliders/swiper/
+ *
+ * Copyright 2010-2015, Vladimir Kharlampidi
+ * The iDangero.us
+ * http://www.idangero.us/
+ *
+ * Licensed under GPL & MIT
+ *
+ * Released on: February 11, 2015
+*/
+/* ===============================================================
+Basic Swiper Styles 
+================================================================*/
+.swiper-container {
+	margin:0 auto;
+	position:relative;
+	overflow:hidden;
+	direction:ltr;
+	-webkit-backface-visibility:hidden;
+	-moz-backface-visibility:hidden;
+	-ms-backface-visibility:hidden;
+	-o-backface-visibility:hidden;
+	backface-visibility:hidden;
+	/* Fix of Webkit flickering */
+	z-index:1;
+}
+.swiper-wrapper {
+	position:relative;
+	width:100%;
+	-webkit-transition-property:-webkit-transform, left, top;
+	-webkit-transition-duration:0s;
+	-webkit-transform:translate3d(0px,0,0);
+	-webkit-transition-timing-function:ease;
+	
+	-moz-transition-property:-moz-transform, left, top;
+	-moz-transition-duration:0s;
+	-moz-transform:translate3d(0px,0,0);
+	-moz-transition-timing-function:ease;
+	
+	-o-transition-property:-o-transform, left, top;
+	-o-transition-duration:0s;
+	-o-transform:translate3d(0px,0,0);
+	-o-transition-timing-function:ease;
+	-o-transform:translate(0px,0px);
+	
+	-ms-transition-property:-ms-transform, left, top;
+	-ms-transition-duration:0s;
+	-ms-transform:translate3d(0px,0,0);
+	-ms-transition-timing-function:ease;
+	
+	transition-property:transform, left, top;
+	transition-duration:0s;
+	transform:translate3d(0px,0,0);
+	transition-timing-function:ease;
+
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+}
+.swiper-free-mode > .swiper-wrapper {
+	-webkit-transition-timing-function: ease-out;
+	-moz-transition-timing-function: ease-out;
+	-ms-transition-timing-function: ease-out;
+	-o-transition-timing-function: ease-out;
+	transition-timing-function: ease-out;
+	margin: 0 auto;
+}
+.swiper-slide {
+	float: left;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+/* IE10 Windows Phone 8 Fixes */
+.swiper-wp8-horizontal {
+	-ms-touch-action: pan-y;
+}
+.swiper-wp8-vertical {
+	-ms-touch-action: pan-x;
+}
+
+/* ===============================================================
+Your custom styles, here you need to specify container's and slide's
+sizes, pagination, etc.
+================================================================*/
+.swiper-container {
+	/* Specify Swiper's Size: */
+	width: 100%;
+	height: 100%;
+}
+.swiper-slide {
+	/* Specify Slides's Size: */
+	
+	width: 100%;
+	height: 100%;
+}
+.swiper-slide-active {
+	/* Specific active slide styling: */
+	
+}
+.swiper-slide-visible {
+	/* Specific visible slide styling: */	
+
+}
+/* ===============================================================
+Pagination Styles
+================================================================*/
+.swiper-pagination-switch {
+	/* Stylize pagination button: */	
+
+}
+.swiper-active-switch {
+	/* Specific active button style: */	
+	
+}
+.swiper-visible-switch {
+	/* Specific visible button style: */	
+	
+}
